@@ -1,13 +1,13 @@
 # Minimum Django and REST framework version
-Django>=1.11.14,<2.0
-djangorestframework>=3.6,<3.11
-marshmallow>=2.15.3,<3.0
+Django>=1.11.14,<4.0
+djangorestframework>=3.6,<3.12
+marshmallow>=2.15.3,<4.0
 
 # Test requirements
-pytest-django==3.5.1
-pytest==5.0.1
-pytest-cov==2.7.1
-flake8==3.7.8
+pytest
+pytest-django==3.8.0
+pytest-cov==2.8.1
+flake8==3.7.9
 
 # MkDocs for documentation
-mkdocs==1.0.4
+mkdocs

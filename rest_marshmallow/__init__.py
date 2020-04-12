@@ -8,7 +8,7 @@ from rest_framework.serializers import BaseSerializer, ValidationError
 IS_MARSHMALLOW_LT_3 = int(marshmallow.__version__.split('.')[0]) < 3
 
 
-__version__ = '4.0.0'
+__version__ = '4.0.2'
 
 _schema_kwargs = (
     'only', 'exclude', 'dump_only', 'load_only', 'context', 'partial'
@@ -33,6 +33,9 @@ class Schema(BaseSerializer, MarshmallowSchema):
                 schema_kwargs[key] = kwargs.pop(key)
 
         super(Schema, self).__init__(*args, **kwargs)
+        # XXX: Remove parent attribute so that Field.root resolves properly
+        #  https://github.com/marshmallow-code/django-rest-marshmallow/issues/131#issuecomment-601089549
+        delattr(self, 'parent')
         MarshmallowSchema.__init__(self, **schema_kwargs)
 
     def to_representation(self, instance):
